@@ -38,4 +38,5 @@ To get started with this project, follow these steps to set up the environment:
 1. Clone this repository:
    ```bash
    git clone https://github.com/yourusername/animal-plant-classification.git
-2. Download chekc
+2. Download checkpoint [here]([url](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing))
+   
