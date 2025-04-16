@@ -50,9 +50,9 @@ To get started with this project, follow these steps to set up the environment:
 3. Your structure folder like this: 
       ML_20242_Classification-Images/
    │
-   ├── animals/                  # Chứa dataset động vật sau khi tải về từ Kaggle
-   │   ├── species_1/xxx.jpeg
-   │   ├── species_2/
+   ├── animals/                  # Chứa dataset động vật sau khi tải về từ Kaggle \n
+   │   ├── species_1/xxx.jpeg\n
+   │   ├── species_2/ \n
    │   └── ...
    │
    ├── save_model/              # Thư mục lưu mô hình đã huấn luyện (.pth)
