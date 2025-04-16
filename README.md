@@ -49,37 +49,37 @@ To get started with this project, follow these steps to set up the environment:
 2. Download checkpoint [here](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing)
 3. Your structure folder like this: 
       ML_20242_Classification-Images/ 
-   │
+      │
+      
+      ├── animals/                  # Chứa dataset động vật sau khi tải về từ Kaggle 
    
-   ├── animals/                  # Chứa dataset động vật sau khi tải về từ Kaggle 
-
-   │   ├── species_1/xxx.jpeg
-
-   │   ├── species_2/
-
-   │   └── ...
-
-   │
-
-   ├── save_model/              # Thư mục lưu mô hình đã huấn luyện (.pth)
-
-   │   └── resnet_model.pth
-
-   │
-
-   ├── train_model.py                           # Script huấn luyện mô hình
-
-   ├── dataset.py                               # Script đánh giá mô hình trên tập test
-
-   ├── test_cnn.py                              # Script dataset
-
-   ├── transfer_learning_Resnet.py              # Script xây dựng mô đồ
-
-   │
-
-   ├── download.jpeg                                # Ảnh test
-
-   └── README.md                                # Tài liệu mô tả (file này)
+      │   ├── species_1/xxx.jpeg
+   
+      │   ├── species_2/
+   
+      │   └── ...
+   
+      │
+   
+      ├── save_model/              # Thư mục lưu mô hình đã huấn luyện (.pth)
+   
+      │   └── resnet_model.pth
+   
+      │
+   
+      ├── train_model.py                           # Script huấn luyện mô hình
+   
+      ├── dataset.py                               # Script đánh giá mô hình trên tập test
+   
+      ├── test_cnn.py                              # Script dataset
+   
+      ├── transfer_learning_Resnet.py              # Script xây dựng mô đồ
+   
+      │
+   
+      ├── download.jpeg                                # Ảnh test
+   
+      └── README.md                                # Tài liệu mô tả (file này)
 
 ## Run
    ```bash
