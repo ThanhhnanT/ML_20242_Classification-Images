@@ -22,9 +22,8 @@ We use a pretrained ResNet model for transfer learning and fine-tune it on the s
 ## Dataset
 
 The dataset contains two categories:
-1. **Animal Dataset**: Includes 90 species, each with around 60 images.
-2. **Plant Dataset**: Includes 40 species, each with around 1000 images.
+1. **Animal Dataset**: Includes 90 species, each with around 60 images. Link download: [Animals]([url](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals?fbclid=IwZXh0bgNhZW0CMTEAAR0ySIR54WfGRIcGmXChwsUK6ubh56x2AfwhbR0G_OCybZ2Nwu62LsyQopo_aem_JZBy9FKiNqLniZFTuOjRHg))
+2. **Plant Dataset**: Includes 40 species, each with around 1000 images. 
 
 The images have been preprocessed and divided into training and testing datasets to allow for model evaluation and validation.
 
-### Dataset Structure
