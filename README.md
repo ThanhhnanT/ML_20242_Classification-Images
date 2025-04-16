@@ -19,6 +19,14 @@ This project focuses on using deep learning techniques to classify images into t
 
 We use a pretrained ResNet model for transfer learning and fine-tune it on the specific dataset. The model is capable of classifying images with high accuracy, and it can be further improved with more training and hyperparameter tuning.
 
+## Dataset
+
+The dataset contains two categories:
+1. **Animal Dataset**: Includes 90 species, each with around 60 images. You can download the animal image dataset from [Kaggle here](https://www.kaggle.com/datasets/iamsouravbanerjee/animal-image-dataset-90-different-animals?fbclid=IwZXh0bgNhZW0CMTEAAR0ySIR54WfGRIcGmXChwsUK6ubh56x2AfwhbR0G_OCybZ2Nwu62LsyQopo_aem_JZBy9FKiNqLniZFTuOjRHg).
+2. **Plant Dataset**: Includes 40 species, each with around 1000 images.
+
+The images have been preprocessed and divided into training and testing datasets to allow for model evaluation and validation.
+
 
 ## Model
 
@@ -38,5 +46,5 @@ To get started with this project, follow these steps to set up the environment:
 1. Clone this repository:
    ```bash
    git clone https://github.com/yourusername/animal-plant-classification.git
-2. Download checkpoint [here]([url](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing))
+2. Download checkpoint [here](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing)
    
