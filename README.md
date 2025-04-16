@@ -53,7 +53,7 @@ To get started with this project, follow these steps to set up the environment:
 
       │
 
-      ├── animals/                                                             # Chứa dataset động vật sau khi tải về từ Kaggle
+      ├── animals/                                                        
 
       │   ├── species_1/xxx.jpeg
 
@@ -63,25 +63,24 @@ To get started with this project, follow these steps to set up the environment:
 
       │
 
-      ├── save_model/                                                          # Thư mục lưu mô hình đã huấn luyện (.pth)
+      ├── save_model/                                                         
 
       │   └── resnet_model.pth
 
       │
 
-      ├── train_model.py                                                       # Script huấn luyện mô hình
+      ├── train_model.py                                                    
 
-      ├── dataset.py                                                           # Script xử lý và chuẩn bị dataset
 
-      ├── test_cnn.py                                                          # Script đánh giá mô hình trên tập test
+      ├── test_cnn.py                                                
 
-      ├── transfer_learning_Resnet.py                                          # Script xây dựng mô hình sử dụng ResNet
+      ├── transfer_learning_Resnet.py                                    
 
       │
 
-      ├── download.jpeg                                                        # Ảnh test (ví dụ để dự đoán)
+      ├── download.jpeg                                                       
 
-      └── README.md                                                            # Tài liệu mô tả (file này)
+      └── README.md                                                            
 
 
 ## Run
