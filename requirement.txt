@@ -1,0 +1,19 @@
+# PyTorch + CUDA 12.6
+torch==2.6.0+cu126
+torchvision==0.21.0+cu126
+torchaudio==2.6.0+cu126
+# Cần thiết để xử lý ảnh
+opencv-python==4.10.0.84
+opencv-python-headless==4.10.0.84
+# Tính toán và xử lý dữ liệu
+numpy==2.1.1
+pandas==2.2.3
+scikit-learn==1.5.2
+matplotlib==3.10.1
+# Training, log
+tqdm
+tensorboard==2.6.0
+# Dùng trong template (ví dụ: HTML render hoặc log)
+jinja2==3.1.4
+protobuf==3.20.3
+

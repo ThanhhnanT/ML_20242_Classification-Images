@@ -4,6 +4,7 @@ import torch.nn as nn
 import cv2
 from torchvision.transforms import Compose, Normalize, Resize, ToTensor
 import os
+
 def test():
     root = 'animals'
     categories = os.listdir(root)
