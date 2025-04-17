@@ -45,10 +45,11 @@ To get started with this project, follow these steps to set up the environment:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/ThanhhnanT/ML_20242_Classification-Images.git
+   git clone https://github.com/ThanhhnanT/ML_20242_Classification-Images.gitProject_Machine_2024.2
+   cd ML_20242_Classification-Images
 2. Install package:
    ```bash
-   pip install -r requirement.txt --extra-index-url https://download.pytorch.org/whl/cu126
+   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu126
 3. Download checkpoint [here](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing)
 4. Your structure folder like this:
 
@@ -88,5 +89,4 @@ To get started with this project, follow these steps to set up the environment:
 
 ## Run
    ```bash
-   cd ML_20242_Classification-Images
    python test_cnn.py
