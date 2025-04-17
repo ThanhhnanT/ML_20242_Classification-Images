@@ -1,7 +1,7 @@
-# PyTorch + CUDA 12.6
-torch==2.6.0+cu126
-torchvision==0.21.0+cu126
-torchaudio==2.6.0+cu126
+# PyTorch + CUDA 12.4
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
+torchaudio==2.6.0+cu124
 # Cần thiết để xử lý ảnh
 opencv-python==4.10.0.84
 opencv-python-headless==4.10.0.84
