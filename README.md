@@ -46,8 +46,11 @@ To get started with this project, follow these steps to set up the environment:
 1. Clone this repository:
    ```bash
    git clone https://github.com/yourusername/animal-plant-classification.git](https://github.com/ThanhhnanT/ML_20242_Classification-Images.git
-2. Download checkpoint [here](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing)
-3. Your structure folder like this:
+2. Install package:
+   ```bash
+   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu126
+3. Download checkpoint [here](https://drive.google.com/drive/folders/1gJBBemxc0vCnqhe69FtZ4jUpNTWXLXPT?usp=sharing)
+4. Your structure folder like this:
 
       ML_20242_Classification-Images/
 
