@@ -98,9 +98,9 @@ def train():
             'optimizer': optimize_function.state_dict(),
             'accuracy': result
         }
-        torch.save(checkpoint, os.path.join('../regex_tutorial/save_model', "last_point.pt"))
+        torch.save(checkpoint, os.path.join('save_model', "last_point.pt"))
         if result > max:
-            torch.save(checkpoint, os.path.join('../regex_tutorial/save_model', "best_point.pt"))
+            torch.save(checkpoint, os.path.join('save_model', "best_point.pt"))
             max = result
 
 
