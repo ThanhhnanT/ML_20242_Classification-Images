@@ -37,6 +37,7 @@ def test():
     print(image.shape)
 
     # Dự đoán
+    model.eval()
     with torch.no_grad():
         predict = model(image)
         index_label = torch.argmax(predict)

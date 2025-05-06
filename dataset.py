@@ -11,9 +11,10 @@ class Animal(Dataset):
         self.categories = os.listdir(root)
         self.labels = []
         self.transform = transform
-
+        # print(len(self.categories))
         for i,(item) in enumerate(self.categories):
             path = os.path.join(root, item)
+            # print(len(os.listdir(path)))
             data_train, data_test = train_test_split(os.listdir(path), train_size = 0.8, random_state = 42)
             if train == True:
                 for path_image in data_train:
@@ -41,7 +42,7 @@ if __name__ == '__main__':
         Resize((224,224))
     ])
     data = Animal(root = root, train =True, transform = transform)
-    image, label = data.__getitem__(3)
-    print(image, data.categories[label])
+    # image, label = data.__getitem__(3)
+    # print(image, data.categories[label])
 
     # print(data.__len__())
