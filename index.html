@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animal Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-area:hover {
+            border-color: #1a73e8;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #1557b0;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        img {
+            max-width: 300px;
+            max-height: 300px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #1a73e8;
+        }
+        .confidence {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Animal Classifier</h1>
+        <div class="upload-area" onclick="document.getElementById('upload').click()">
+            <p>Click to upload an image or drag and drop</p>
+            <input type="file" id="upload" accept="image/*">
+        </div>
+        <button id="predictBtn" onclick="uploadImage()" disabled>Predict</button>
+        <div class="loading" id="loading">Processing...</div>
+        <div id="preview"></div>
+        <div class="result" id="result"></div>
+        <div class="confidence" id="confidence"></div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('upload');
+        const predictBtn = document.getElementById('predictBtn');
+        const loading = document.getElementById('loading');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                predictBtn.disabled = false;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').innerHTML = `<img src="${e.target.result}" />`;
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+
+        function uploadImage() {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select an image.");
+                return;
+            }
+
+            // Reset results
+            document.getElementById('result').textContent = "";
+            document.getElementById('confidence').textContent = "";
+            
+            // Show loading
+            loading.style.display = 'block';
+            predictBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = "Result: " + data.label;
+                document.getElementById('confidence').textContent = "Confidence: " + data.confidence;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = "Error occurred!";
+            })
+            .finally(() => {
+                loading.style.display = 'none';
+                predictBtn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>
