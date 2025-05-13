@@ -20,12 +20,8 @@ model.eval()
 
 # Lấy categories từ dataset để đảm bảo thứ tự giống với training
 root = 'animals'
-transform = Compose([
-    ToTensor(),
-    Resize((224,224))
-])
-dataset = Animal(root=root, train=True, transform=transform)
-categories = dataset.categories
+
+categories = os.listdir(root)
 print("Categories order:", categories)
 
 # Hàm tiền xử lý ảnh

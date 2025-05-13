@@ -14,7 +14,7 @@ def test():
         Resize((224,224))
     ])
     dataset = Animal(root=root, train=True, transform=transform)
-    categories = dataset.categories
+    categories = os.listdir(root)
     print("Categories order:", categories)
     print("Number of categories:", len(categories))
 
@@ -29,15 +29,12 @@ def test():
     print("Model accuracy:", checkpoint['accuracy'])
 
     # Lấy ảnh
-<<<<<<< HEAD
+
     ori_image = cv2.imread('images.jpeg')
-=======
     ori_image = cv2.imread('download.jpeg')
     if ori_image is None:
         print("Error: Could not read image 'download.jpeg'")
         return
->>>>>>> 0547b72be81bb1b11a5ac4975fb4dfb7c96fe2ad
-
     # Chuyển đổi ảnh phù hợp với mô hình
     image = cv2.cvtColor(ori_image, cv2.COLOR_BGR2RGB)
     transform = Compose([
