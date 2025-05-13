@@ -1,4 +1,7 @@
 animals/
 runs/
 save_model/
-split_ttv_dataset_type_of_plants/
+split_ttv_dataset_type_of_plants/__pycache__/
+*.pyc
+__pycache__/
+*.pyc
