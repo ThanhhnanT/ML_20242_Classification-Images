@@ -2,6 +2,7 @@ import cv2
 import torch
 import torch.nn as nn
 from jinja2.optimizer import optimize
+from pygments.lexer import default
 from torch.utils.checkpoint import checkpoint
 from torchvision.transforms.v2 import ColorJitter
 from torchvision.transforms import Compose, Resize, Normalize, ToTensor, RandomHorizontalFlip, RandomRotation, RandomResizedCrop
@@ -26,6 +27,7 @@ def Arg():
     parser.add_argument('--learning_rate', '-lr', type=int, default=1e-2, help='learning rate')
     parser.add_argument('--image_size', '-imgs', type=int, default=224, help='size image')
     parser.add_argument('--weight_decay', '-wd', type=int, default=1e-4, help='weight decay')
+    parser.add_argument('--tensorboard', '-ts', type=str, default= '../runs', help='tensor path')
     arg = parser.parse_args()
     return arg
 
@@ -65,7 +67,7 @@ def plot_confusion_matrix(writer, cm, class_names, epoch):
 
 def train():
     arg = Arg()
-    writer = SummaryWriter('../')
+    writer = SummaryWriter(arg.tensorboard)
     root = arg.root
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(device)
