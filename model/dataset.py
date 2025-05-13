@@ -9,7 +9,7 @@ class Animal(Dataset):
     def __init__(self, root = None, train = True, transform = None):
         self.data = []
         # Sắp xếp categories để đảm bảo thứ tự luôn giống nhau
-        self.categories = sorted(os.listdir(root))
+        self.categories = os.listdir(root)
         print("Categories order:", self.categories)  # In ra để debug
         self.labels = []
         self.transform = transform
@@ -42,6 +42,6 @@ if __name__ == '__main__':
         ToTensor(),
         Resize((224,224))
     ])
-    data = Animal(root = root, train = True, transform = transform)
+    data = Animal(root = root, train = False, transform = transform)
     print("Number of training samples:", len(data))
     print("Number of categories:", len(data.categories))

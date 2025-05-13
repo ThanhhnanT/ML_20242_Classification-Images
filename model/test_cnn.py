@@ -1,6 +1,5 @@
-from tranfer_learning_ResNet import Model_Tranfer_Resnet50
+from model.tranfer_learning_ResNet import Model_Tranfer_Resnet50
 import torch
-import torch.nn as nn
 import cv2
 from torchvision.transforms import Compose, Normalize, Resize, ToTensor
 import os
@@ -24,14 +23,14 @@ def test():
 
     # Load checkpoint model
     model = Model_Tranfer_Resnet50().to(device)
-    checkpoint = torch.load("save_model/best_point.pt", weights_only = False, map_location=device)
+    checkpoint = torch.load("../save_model/best_point.pt", weights_only = False, map_location=device)
     model.load_state_dict(checkpoint['model'])
     print("Model accuracy:", checkpoint['accuracy'])
 
     # Lấy ảnh
 
-    ori_image = cv2.imread('images.jpeg')
-    ori_image = cv2.imread('download.jpeg')
+    ori_image = cv2.imread('../test images/images.jpeg')
+    ori_image = cv2.imread('../test images/download.jpeg')
     if ori_image is None:
         print("Error: Could not read image 'download.jpeg'")
         return

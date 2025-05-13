@@ -2,7 +2,7 @@ import torch.nn as nn
 from numpy.ma.core import argmax
 from torchvision.models import resnet50, ResNet50_Weights, efficientnet_v2_m, EfficientNet_V2_M_Weights
 from torchvision.transforms import Compose, ToTensor, Resize
-from dataset import Animal
+from model.dataset import Animal
 import torch
 
 class Model_Tranfer_Resnet50(nn.Module):

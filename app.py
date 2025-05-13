@@ -1,12 +1,11 @@
 from flask import Flask, request, jsonify, send_file
-from tranfer_learning_ResNet import Model_Tranfer_Resnet50
+from model.tranfer_learning_ResNet import Model_Tranfer_Resnet50
 import torch
 from torchvision.transforms import Compose, Normalize, Resize, ToTensor
 import cv2
 import numpy as np
 import os
 from flask_cors import CORS
-from dataset import Animal  
 
 app = Flask(__name__)
 CORS(app)  

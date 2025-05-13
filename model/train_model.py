@@ -15,6 +15,19 @@ from tqdm import tqdm
 import os
 from torch.utils.tensorboard import SummaryWriter
 import matplotlib.pyplot as plt
+from argparse import ArgumentParser
+
+def Arg():
+    parser = ArgumentParser(description="Train Model")
+    parser.add_argument("--batch-size", '-b', type=int, default=64, help='batch-size')
+    parser.add_argument('--epochs', '-e', type=int, default=100, help='number of epochs')
+    parser.add_argument('--root', '-r', type=str, default='../animals', help='root path')
+    parser.add_argument('--checkpoint', '-c', type=str, default='../save_model/last_point.pt', help='last save model')
+    parser.add_argument('--learning_rate', '-lr', type=int, default=1e-2, help='learning rate')
+    parser.add_argument('--image_size', '-imgs', type=int, default=224, help='size image')
+    parser.add_argument('--weight_decay', '-wd', type=int, default=1e-4, help='weight decay')
+    arg = parser.parse_args()
+    return arg
 
 def plot_confusion_matrix(writer, cm, class_names, epoch):
     """
@@ -51,12 +64,13 @@ def plot_confusion_matrix(writer, cm, class_names, epoch):
     writer.add_figure('confusion_matrix', figure, epoch)
 
 def train():
-    writer = SummaryWriter()
-    root = 'animals'
+    arg = Arg()
+    writer = SummaryWriter('../')
+    root = arg.root
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(device)
     model = Model_Tranfer_Resnet50().to(device)
-    checkpoint = torch.load("./save_model/last_point.pt")
+    checkpoint = torch.load(arg.checkpoint)
     model.load_state_dict(checkpoint['model'])
     print(checkpoint['accuracy'])
     for name, param in model.named_parameters():
@@ -66,7 +80,7 @@ def train():
             param.requires_grad = False
     train_transform = Compose([
         ToTensor(),
-        Resize((224, 224)),
+        Resize((arg.image_size, arg.image_size)),
         RandomHorizontalFlip(p=0.5),
         RandomRotation(degrees=15),
         RandomResizedCrop(224, scale=(0.8, 1.0)),
@@ -76,7 +90,7 @@ def train():
 
     test_transform = Compose([
         ToTensor(),
-        Resize((224, 224)),
+        Resize((arg.image_size, arg.image_size)),
         Normalize(mean=[0.485, 0.456, 0.406],
                   std=[0.229, 0.224, 0.225])
 
@@ -87,7 +101,7 @@ def train():
 
     train_dataloader = DataLoader(
         data_train,
-        batch_size=32,
+        batch_size=arg.batch_size,
         shuffle=True,
         drop_last=False,
         num_workers=6
@@ -95,16 +109,16 @@ def train():
 
     test_dataloader = DataLoader(
         data_test,
-        batch_size=32,
+        batch_size=arg.batch_size,
         shuffle=True,
         drop_last=False,
         num_workers=6
     )
     loss_function = nn.CrossEntropyLoss()
-    optimize_function = torch.optim.AdamW(model.parameters(), lr=2e-4, weight_decay=1e-4 )
+    optimize_function = torch.optim.AdamW(model.parameters(), lr=arg.learning_rate, weight_decay=arg.weight_decay )
     optimize_function.load_state_dict(checkpoint['optimizer'])
-    epochs =100
-    max = 0.93
+    epochs = arg.epochs
+    max = checkpoint['accuracy']
     for epoch in range(epochs):
         model.train()
         progress_bar = tqdm(train_dataloader)
@@ -141,9 +155,9 @@ def train():
             'optimizer': optimize_function.state_dict(),
             'accuracy': result
         }
-        torch.save(checkpoint, os.path.join('save_model', "last_point.pt"))
+        torch.save(checkpoint, os.path.join('../save_model', "last_point.pt"))
         if result > max:
-            torch.save(checkpoint, os.path.join('save_model', "best_point.pt"))
+            torch.save(checkpoint, os.path.join('../save_model', "best_point.pt"))
             max = result
 
 
