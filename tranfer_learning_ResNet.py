@@ -22,6 +22,7 @@ class Model_Tranfer_Resnet50(nn.Module):
                 nn.Dropout(),
                 nn.Linear(in_features=256, out_features=120)
             )
+            # print(self.model)
 
         def forward(self, x):
             x= self.model(x)
@@ -29,8 +30,8 @@ class Model_Tranfer_Resnet50(nn.Module):
 
 if __name__ == '__main__':
     model = Model_Tranfer_Resnet50()
-    model = model.to('cuda' if torch.cuda.is_available() else 'cpu')
-
+    # model = model.to('cuda' if torch.cuda.is_available() else 'cpu')
+    #
     for name, param in model.named_parameters():
         if 'features.6' in name or 'features.7' in name or 'features.8' in name or 'classifier' in name:
             param.requires_grad = True

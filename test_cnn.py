@@ -22,7 +22,7 @@ def test():
     print(checkpoint['accuracy'])
 
     # Lấy ảnh
-    ori_image = cv2.imread('download.jpeg')
+    ori_image = cv2.imread('images.jpeg')
 
     # Chuyển đổi ảnh phù hợp với mô hình
     image = cv2.cvtColor(ori_image, cv2.COLOR_BGR2RGB)
