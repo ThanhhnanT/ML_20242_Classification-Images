@@ -23,7 +23,7 @@ def test():
 
     # Load checkpoint model
     model = Model_Tranfer_Resnet50().to(device)
-    checkpoint = torch.load("../save_model/best_point.pt", weights_only = False, map_location=device)
+    checkpoint = torch.load("../save_model/efficientnet/best_point.pt", weights_only = False, map_location=device)
     model.load_state_dict(checkpoint['model'])
     print("Model accuracy:", checkpoint['accuracy'])
 

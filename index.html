@@ -73,10 +73,53 @@
             display: none;
             margin: 20px 0;
         }
+        .model-selector {
+            color: #1a73e8;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .model-selector label {
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        .model-selector select {
+            color: #1a73e8;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        .model-selector select:hover {
+            border-color: #1a73e8;
+        }
+
+        .model-selector select:focus {
+            border-color: #1a73e8;
+            box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+        }
+
+
+
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="model-selector">
+            <label for="modelSelect">Model:</label>
+            <select id="modelSelect" onchange="changeModel()">
+                <option value="EfficientNet">EfficientNet</option>
+                <option value="ResNet">ResNet</option>
+                <option value="ViT">ViT</option>
+            </select>
+        </div>
         <h1>Animal Classifier</h1>
         <div class="upload-area" onclick="document.getElementById('upload').click()">
             <p>Click to upload an image or drag and drop</p>
@@ -93,6 +136,26 @@
         const fileInput = document.getElementById('upload');
         const predictBtn = document.getElementById('predictBtn');
         const loading = document.getElementById('loading');
+        const model = document.getElementById('modelSelect').value;
+
+        function changeModel() {
+            const model = document.getElementById('modelSelect').value;
+            fetch('http://127.0.0.1:5000/select_model', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ model })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(err => {
+                console.error('Model switch error:', err);
+            });
+        }
+
 
         fileInput.addEventListener('change', function() {
             if (this.files && this.files[0]) {
