@@ -2,6 +2,12 @@
 
 This repository contains a machine learning project aimed at classifying animals and plants into their respective categories using deep learning techniques. The project uses a pretrained model (ResNet) to classify 90 animal species and 40 plant species based on images.
 
+
+
+## 🎥 Demo
+
+![Demo Video](./output.gif)
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Dataset](#dataset)
