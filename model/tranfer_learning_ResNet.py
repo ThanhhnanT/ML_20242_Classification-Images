@@ -3,6 +3,7 @@ from numpy.ma.core import argmax
 from torchvision.models import resnet50, ResNet50_Weights, efficientnet_v2_m, EfficientNet_V2_M_Weights, vit_b_16, ViT_B_16_Weights
 from torchvision.transforms import Compose, ToTensor, Resize
 import torch
+from torchsummary import summary
 
 class Model_Tranfer_Resnet50(nn.Module):
         def __init__(self, model ='efficientnet'):
@@ -48,14 +49,15 @@ class Model_Tranfer_Resnet50(nn.Module):
             return self.model(x)
 
 if __name__ == '__main__':
-    model = Model_Tranfer_Resnet50(model = 'vit')
+    model = Model_Tranfer_Resnet50(model = 'resnet').to('cuda')
+    summary(model, (3,224,224))
     # model = model.to('cuda' if torch.cuda.is_available() else 'cpu')
-    #
-    for name, param in model.named_parameters():
-        if 'heads' in name or 'encoder.ln' in name or 'encoder_layer_11' in name or 'encoder_layer_10' in name or 'encoder_layer_9' in name or 'encoder_layer_8' in name or 'encoder_layer_7' in name:
-            param.requires_grad = True
-        else:
-            param.requires_grad = False
-        print(name, param.requires_grad)
+    # print(model)
+    # for name, param in model.named_parameters():
+    #     if 'heads' in name or 'encoder.ln' in name or 'encoder_layer_11' in name or 'encoder_layer_10' in name or 'encoder_layer_9' in name or 'encoder_layer_8' in name or 'encoder_layer_7' in name:
+    #         param.requires_grad = True
+    #     else:
+    #         param.requires_grad = False
+    #     print(name, param.requires_grad)
 
 

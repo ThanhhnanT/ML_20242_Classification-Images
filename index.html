@@ -106,6 +106,11 @@
             box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
         }
 
+        .predict{
+            color: #1a73e8;
+            margin: 5px;
+        }
+
 
 
     </style>
@@ -192,9 +197,15 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 document.getElementById('result').textContent = "Result: " + data.label;
-                document.getElementById('confidence').textContent = "Confidence: " + data.confidence;
+                const confidenceDiv = document.getElementById('confidence');
+                confidenceDiv.innerHTML = "<strong class='predict'>Top 3 Predictions:</strong><br>" +
+                    data.top3.map((item, index) =>
+                        `${index + 1}. ${item.label} - ${item.confidence}`
+                    ).join("<br>");
             })
+
             .catch(error => {
                 console.error('Error:', error);
                 document.getElementById('result').textContent = "Error occurred!";

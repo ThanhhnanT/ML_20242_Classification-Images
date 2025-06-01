@@ -21,7 +21,7 @@ model.eval()
 root = 'animals'
 
 categories = os.listdir(root)
-# print("Categories order:", categories)
+print("Categories order:", categories)
 
 # Hàm tiền xử lý ảnh
 transform = Compose([
